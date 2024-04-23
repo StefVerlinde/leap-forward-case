@@ -17,6 +17,16 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        'primary': '#0E325B',
+        'secondary': '#0C6AAE',
+        'tertiary': '#2D89CC',
+        'background': '#004475',
+        'complementary': "#FFE200",
+        'text': '#004475',
+        'card-background': '#C2E2FE',
+        'card-success': '#4789C6'
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
