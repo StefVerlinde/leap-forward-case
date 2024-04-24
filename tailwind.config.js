@@ -25,7 +25,8 @@ module.exports = {
         'complementary': "#FFE200",
         'text': '#004475',
         'card-background': '#C2E2FE',
-        'card-background-selected': '#4789C6'
+        'card-background-selected': '#4789C6',
+        'button-background': '#E3E5E7'
       },
       keyframes: {
         "accordion-down": {
