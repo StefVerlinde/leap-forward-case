@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: 'FlandersArtSans';
+    font-weight: bold;
+    src: url('/fonts/FlandersArtSans-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'FlandersArtSans';
+    font-weight: 300;
+    src: url('/fonts/FlandersArtSans-Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'FlandersArtSans';
+    font-weight: 500;
+    src: url('/fonts/FlandersArtSans-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'FlandersArtSans';
+    font-weight: normal;
+    src: url('/fonts/FlandersArtSans-Regular.otf') format('opentype');
+}
+
+body {
+    font-family: 'FlandersArtSans', sans-serif;
+}
