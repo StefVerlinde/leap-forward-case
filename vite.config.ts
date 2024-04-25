@@ -12,4 +12,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Proxy to the API to bypass cors error
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://lab.lfwd.be/dev-test/quiz_data.json',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  }
 })

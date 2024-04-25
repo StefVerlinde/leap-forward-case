@@ -3,9 +3,17 @@ import Title from "./components/Title"
 import Answer from "./components/Answer"
 import { Button } from "./components/ui/Button"
 import Timer from "./components/Timer"
+import { fetcher } from "./utils/fetcher"
+import useSWR from "swr"
 
 
 function App() {
+  const { data: questions, error, isLoading } = useSWR('/api', fetcher)
+  console.log(questions)
+  if (error) return <div>failed to load</div>
+  if (isLoading) return <div>loading...</div>
+
+
   return (
     <div className="bg-background h-screen w-screen overflow-hidde flex justify-center items-center">
       <div className="w-[65%] flex gap-4">
@@ -26,7 +34,7 @@ function App() {
             <Answer answer="Hesp" />
           </div>
           <div className="flex flex-col gap-y-4 w-1/2 mx-auto">
-            <Button >Klaar!</Button>
+            <Button>Klaar!</Button>
             <Button>Geef me een tip...</Button>
           </div>
         </div>
