@@ -3,9 +3,11 @@ import { useState } from "react"
 
 interface AnswerProps {
     answer: string
+    correct: boolean
 }
 
-const Answer = ({ answer }: AnswerProps) => {
+const Answer = ({ answer, correct }: AnswerProps) => {
+    console.log(correct)
     const [isSelected, setIsSelected] = useState(false)
 
     const selectAnswer = () => {

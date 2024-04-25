@@ -1,12 +1,12 @@
-export type Questions = Question[]
+export type Questions = QuestionType[]
 
-export interface Question {
+export interface QuestionType {
     question: string
     time_limit_s: number
-    answers: Answer[]
+    answers: AnswerType[]
 }
 
-export interface Answer {
+export interface AnswerType {
     answer: string
     correct: boolean
 }

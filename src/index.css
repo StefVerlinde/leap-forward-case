@@ -27,6 +27,19 @@
     src: url('/fonts/FlandersArtSans-Regular.otf') format('opentype');
 }
 
+* {
+    /* Smooth transition for all CSS properties */
+    transition: all 0.3s ease;
+}
+
 body {
+    /* Always show vertical scrollbar to prevent layout shifts */
+    overflow-y: scroll;
     font-family: 'FlandersArtSans', sans-serif;
+
+}
+
+html {
+    /* Enable smooth scrolling behavior */
+    scroll-behavior: smooth;
 }
