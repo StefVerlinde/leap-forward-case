@@ -1,25 +1,18 @@
 import classNames from "classnames"
-import { useState } from "react"
+import { ButtonHTMLAttributes } from "react"
 
-interface AnswerProps {
+interface AnswerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     answer: string
-    correct: boolean
+    selected: boolean
 }
 
-const Answer = ({ answer, correct }: AnswerProps) => {
-    console.log(correct)
-    const [isSelected, setIsSelected] = useState(false)
-
-    const selectAnswer = () => {
-        setIsSelected(!isSelected)
-    }
-
-    const buttonStyle = classNames('text-text bg-card-background text-center py-2 rounded-lg font-bold border border-card-background', {
-        'text-white bg-card-background-selected border-complementary': isSelected,
+const Answer = ({ answer, selected, ...props }: AnswerProps) => {
+    const buttonStyle = classNames('text-text bg-card-background text-center py-2 rounded-lg font-bold border border-card-background disabled:pointer-events-none disabled:opacity-50', {
+        'text-white bg-card-background-selected border-complementary': selected,
     });
 
     return (
-        <button className={buttonStyle} onClick={selectAnswer}>
+        <button className={buttonStyle} {...props}>
             {answer}
         </button>
     )
