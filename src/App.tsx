@@ -5,15 +5,22 @@ import { Button } from "./components/ui/Button"
 import Timer from "./components/Timer"
 import { fetcher } from "./utils/fetcher"
 import useSWR from "swr"
-import { AnswerType, Questions } from "./types/Question"
-import { useState } from "react"
+import { AnswerType, Questions } from "./types/QuestionType"
+import { useMemo, useState } from "react"
+import { ANSWER_VARIANT } from "./enums/AnswerVariantEnum"
 
 
 function App() {
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState<AnswerType[]>([])
 
+  const nextButtonText = useMemo(() => {
+    return isSubmitted ? 'Doorgaan' : 'Klaar!'
+  }, [isSubmitted])
+
   const { data: questions, error, isLoading } = useSWR<Questions>('/api', fetcher)
+
 
   // ADD ERROR COMPONENT
   if (error || !questions) return <div>failed to load</div>
@@ -29,8 +36,8 @@ function App() {
     setSelectedAnswers([...selectedAnswers, answer])
   }
 
-  const isSelected = (answer: AnswerType) => {
-    return selectedAnswers.includes(answer)
+  const answerVariant = (answer: AnswerType) => {
+    return selectedAnswers.includes(answer) ? ANSWER_VARIANT.SELECTED : ANSWER_VARIANT.DEFAULT
   }
 
   const isDisabled = (answer: AnswerType) => {
@@ -44,6 +51,20 @@ function App() {
     return 'default'
   }
 
+  const validateAnswers = () => {
+    if (selectedAnswers.length === 3) {
+      setIsSubmitted(true)
+      // const correctAnswers = questions[currentQuestion].answers.filter(answer => answer.correct)
+      const selectedCorrectAnswers = selectedAnswers.filter(answer => answer.correct)
+      console.log(selectedCorrectAnswers.length)
+      // if (correctAnswers.length === selectedCorrectAnswers.length) {
+      //   console.log('CORRECT')
+      // } else {
+      //   console.log('INCORRECT')
+      // }
+    }
+  }
+
   return (
     <div className="bg-background h-screen w-screen overflow-hidde flex justify-center items-center">
       <div className="w-[65%] flex gap-4">
@@ -53,13 +74,13 @@ function App() {
           <Title title={questions[currentQuestion].question} />
           <div className="grid grid-cols-2 gap-x-5 gap-y-4">
             {questions[currentQuestion].answers.map((answer, index) => (
-              <Answer key={index} answer={answer.answer} selected={isSelected(answer)} onClick={() => onAnswerClick(answer)} disabled={isDisabled(answer)} />
+              <Answer key={index} answer={answer.answer} variant={answerVariant(answer)} onClick={() => onAnswerClick(answer)} disabled={isDisabled(answer)} />
             ))
             }
           </div>
           <div className="flex flex-col gap-y-4 w-1/2 mx-auto">
-            <Button onClick={() => setCurrentQuestion(prev => prev + 1)} variant={nextButtonVariant()}>Klaar!</Button>
-            <Button>Geef me een tip...</Button>
+            <Button onClick={() => validateAnswers()} variant={nextButtonVariant()}>{nextButtonText}</Button>
+            {!isSubmitted && <Button>Geef me een tip...</Button>}
           </div>
         </div>
       </div>
