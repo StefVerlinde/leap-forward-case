@@ -3,13 +3,19 @@ import StopwatchSolid from '../assets/icons/stopwatch-solid.svg?react'
 
 interface TimerProps {
     time: number;
+    timerEnd: () => void;
 }
 
-const Timer = ({ time }: TimerProps) => {
+const Timer = ({ time, timerEnd }: TimerProps) => {
     const [countdown, setCountdown] = useState(time);
 
     useEffect(() => {
+        setCountdown(time);
+    }, [time]);
+
+    useEffect(() => {
         if (countdown === 0) {
+            timerEnd();
             return;
         }
 
@@ -20,7 +26,7 @@ const Timer = ({ time }: TimerProps) => {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [countdown]);
+    }, [countdown, timerEnd]);
 
     const formattedNumber = countdown < 10 ? `0${countdown}` : countdown;
 

@@ -4,10 +4,10 @@ import { ButtonHTMLAttributes } from "react"
 
 interface AnswerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     answer: string
-    variant: ANSWER_VARIANT
+    variant?: ANSWER_VARIANT
 }
 
-const Answer = ({ answer, variant, ...props }: AnswerProps) => {
+const Answer = ({ answer, variant = ANSWER_VARIANT.DEFAULT, ...props }: AnswerProps) => {
     const buttonStyle = classNames('text-text bg-card-background text-center py-2 rounded-lg font-bold border-2 border-card-background disabled:pointer-events-none disabled:opacity-50', {
         'text-white bg-card-background-selected border-complementary': variant === ANSWER_VARIANT.SELECTED,
         'text-primary bg-white border-green-400': variant === ANSWER_VARIANT.CORRECT,
