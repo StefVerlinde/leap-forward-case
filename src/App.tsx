@@ -37,7 +37,15 @@ function App() {
   }
 
   const answerVariant = (answer: AnswerType) => {
-    return selectedAnswers.includes(answer) ? ANSWER_VARIANT.SELECTED : ANSWER_VARIANT.DEFAULT
+    if (selectedAnswers.includes(answer)) {
+      if (isSubmitted) {
+        if (answer.correct) {
+          return ANSWER_VARIANT.CORRECT
+        }
+        return ANSWER_VARIANT.FALSE
+      }
+      return ANSWER_VARIANT.SELECTED
+    }
   }
 
   const isDisabled = (answer: AnswerType) => {
