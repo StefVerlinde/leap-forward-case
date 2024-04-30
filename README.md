@@ -9,6 +9,9 @@
 ### Introduction:
 This project is a solicitation case developed for Leap Forward, showcasing a the given case.
 
+### Demo
+[Live demo](https://leap-forward-case.vercel.app/)
+
 ### Getting Started:
 To run this project locally, follow these steps:
 
