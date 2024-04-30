@@ -28,6 +28,9 @@ module.exports = {
         'card-background-selected': '#4789C6',
         'button-background': '#E3E5E7'
       },
+      backgroundImage: {
+        'left-panel-background': "url('./assets/background.png')",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

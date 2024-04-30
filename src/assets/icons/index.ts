@@ -1,0 +1,5 @@
+export { default as StopwatchSolid } from './stopwatch-solid.svg?react'
+export { default as ArrowRotateRight } from './arrow-rotate-right-solid.svg?react'
+export { default as MapSolid } from './map-solid.svg?react'
+export { default as MusicNote } from './music-note-slash-solid.svg?react'
+export { default as QuestionSolid } from './question-solid.svg?react'

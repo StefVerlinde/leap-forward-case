@@ -1,5 +1,5 @@
+import { StopwatchSolid } from "@/assets/icons";
 import { useEffect, useState } from "react";
-import StopwatchSolid from '../assets/icons/stopwatch-solid.svg?react'
 
 interface TimerProps {
     time: number;

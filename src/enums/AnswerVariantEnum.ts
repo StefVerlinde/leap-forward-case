@@ -1,6 +1,0 @@
-export enum ANSWER_VARIANT {
-    DEFAULT = 'DEFAULT',
-    SELECTED = 'SELECTED',
-    CORRECT = 'CORRECT',
-    FALSE = 'FALSE'
-}

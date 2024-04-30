@@ -94,10 +94,10 @@ function App() {
   }
 
   return (
-    <div className="bg-background h-screen w-screen overflow-hidde flex justify-center items-center">
-      <div className="w-[65%] flex gap-4">
+    <div className="bg-background h-screen w-screen overflow-hidde flex justify-center items-center" >
+      <div className="w-[65%] flex gap-4 min-h-[600px]">
         <LeftPanel />
-        <div className="relative min-h-[500px] border-[12px] border-secondary w-full rounded-2xl bg-primary flex flex-col gap-5 py-4 px-5 text-center">
+        <div className="relative border-[12px] border-secondary w-full rounded-2xl bg-primary flex flex-col gap-5 py-4 px-5 text-center">
           {!isFinished ? (
             <>
               <Timer time={questions[currentQuestion].time_limit_s} timerEnd={() => handleTimerEnd()} pause={isSubmitted} />
