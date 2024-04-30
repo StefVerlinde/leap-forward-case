@@ -14,8 +14,8 @@ const buttonVariants = cva(
         seconday: "bg-background text-white border-b-[4px] border-black border-opacity-30",
         card: "border-2 text-base bg-card-background text-text border-card-background",
         cardSelected: "border-2 text-base text-white bg-card-background-selected border-complementary",
-        cardCorrect: "border-2 text-base text-primary bg-white border-green-400",
-        cardFalse: "border-2 text-base text-primary bg-white border-red-400",
+        cardCorrect: "border-2 text-base text-primary bg-white border-green-400 disabled:opacity-100",
+        cardFalse: "border-2 text-base text-primary bg-white border-red-400 disabled:opacity-100",
       },
       size: {
         default: "h-10 px-4 py-2",
