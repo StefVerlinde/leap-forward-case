@@ -27,8 +27,8 @@ const LeftPanel = () => {
             </div>
             <div className='bg-white flex-1 rounded-b-2xl flex flex-col gap-y-3 items-center py-12 px-4 text-text text-center'>
                 <h1 className='text-2xl font-bold pb-3 border-b-2 border-b-secondary'>De fabriek</h1>
-                <p>Aha, je bent terg! Net op tijd: Onze eerste bestelling is binnen. Een lokale school wil haar studenten vegetaricshe lunch maaltijden aanbieden. Stel de machines in voor...</p>
-                <p>Een gezonde <b>vegetarische</b> pizza met 7 gepaste ingredieënten</p>
+                <p>Aha, je bent terug! Net op tijd: Onze eerste bestelling is binnen. Een lokale school wil haar studenten vegetarische lunch maaltijden aanbieden. Stel de machines in voor...</p>
+                <p>Een gezonde <b>vegetarische</b> pizza met 7 gepaste ingrediënten</p>
             </div>
             <div className='mt-3 flex justify-center gap-3'>
                 <Button variant='seconday' size='icon'><QuestionSolid className='size-5 fill-white' /></Button>
