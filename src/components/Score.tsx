@@ -1,4 +1,4 @@
-import { Button } from "./ui/Button2"
+import { Button } from "./ui/Button"
 
 interface ScorePorps {
     score: number
