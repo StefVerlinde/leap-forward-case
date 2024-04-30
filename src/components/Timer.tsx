@@ -4,29 +4,41 @@ import StopwatchSolid from '../assets/icons/stopwatch-solid.svg?react'
 interface TimerProps {
     time: number;
     timerEnd: () => void;
+    pause?: boolean;
 }
 
-const Timer = ({ time, timerEnd }: TimerProps) => {
+const Timer = ({ time, timerEnd, pause }: TimerProps) => {
     const [countdown, setCountdown] = useState(time);
 
     useEffect(() => {
+        console.log(time)
         setCountdown(time);
     }, [time]);
 
     useEffect(() => {
-        if (countdown === 0) {
-            timerEnd();
-            return;
+        let interval: NodeJS.Timeout | null = null;
+        console.log('effect run')
+
+        if (!pause) {
+            interval = setInterval(() => {
+                console.log('interval run')
+                setCountdown((prevTime) => {
+                    if (prevTime <= 0) {
+                        clearInterval(interval as NodeJS.Timeout);
+                        // Timout to prevent state update on unmounted component
+                        setTimeout(timerEnd, 0);
+                        return 0;
+                    }
+                    return prevTime - 1;
+                });
+            }, 1000);
         }
 
-        const interval = setInterval(() => {
-            setCountdown((prevTime) => {
-                return prevTime - 1;
-            });
-        }, 1000);
+        return () => {
+            if (interval) clearInterval(interval);
+        };
 
-        return () => clearInterval(interval);
-    }, [countdown, timerEnd]);
+    }, [pause, timerEnd]);
 
     const formattedNumber = countdown < 10 ? `0${countdown}` : countdown;
 

@@ -15,13 +15,7 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [score, setScore] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState<AnswerType[]>([])
-
   const { data: questions, error, isLoading } = useSWR<Questions>('/api', fetcher)
-
-  // ADD ERROR COMPONENT
-  if (error || !questions) return <div>failed to load</div>
-  // ADD SKELETON LOADER
-  if (isLoading) return <div>loading...</div>
 
   const onAnswerClick = (answer: AnswerType) => {
     if (selectedAnswers.includes(answer)) {
@@ -49,27 +43,46 @@ function App() {
   }
 
   const nextButtonVariant = () => {
-    if (selectedAnswers.length === 3) {
+    if (selectedAnswers.length === 3 || isSubmitted) {
       return 'highlight'
     }
     return 'default'
   }
 
   const validateAnswers = () => {
+    console.log('validated')
     setIsSubmitted(true)
     const selectedCorrectAnswers = selectedAnswers.filter(answer => answer.correct)
     setScore(prevScore => prevScore + selectedCorrectAnswers.length)
   }
 
   const handleNextQuestion = () => {
-    setIsSubmitted(false)
-    setSelectedAnswers([])
+    console.log('next question')
     setCurrentQuestion(currentQuestion + 1)
+    setSelectedAnswers([])
+    setIsSubmitted(false)
   }
 
+
   const handleTimerEnd = () => {
-    validateAnswers()
+    console.log("handle timer end")
+    validateAnswers();
   }
+
+
+  const handleButtonClicked = () => {
+    console.log("button clicked")
+    if (!isSubmitted) {
+      validateAnswers();
+    } else {
+      handleNextQuestion();
+    }
+  }
+
+  // ADD ERROR COMPONENT
+  if (error || !questions) return <div>failed to load</div>
+  // ADD SKELETON LOADER
+  if (isLoading) return <div>loading...</div>
 
   return (
     <div className="bg-background h-screen w-screen overflow-hidde flex justify-center items-center">
@@ -77,7 +90,7 @@ function App() {
         <LeftPanel />
         <p>{score}</p>
         <div className="border-[12px] border-secondary w-full rounded-2xl bg-primary flex flex-col gap-5   py-4 px-5 text-center">
-          <Timer time={questions[currentQuestion].time_limit_s} timerEnd={handleTimerEnd} />
+          <Timer time={questions[currentQuestion].time_limit_s - 10} timerEnd={() => handleTimerEnd()} pause={isSubmitted} />
           <Title title={questions[currentQuestion].question} />
           <div className="grid grid-cols-2 gap-x-5 gap-y-4">
             {questions[currentQuestion].answers.map((answer, index) => (
@@ -86,7 +99,7 @@ function App() {
             }
           </div>
           <div className="flex flex-col gap-y-4 w-1/2 mx-auto">
-            {isSubmitted ? <Button onClick={() => handleNextQuestion()} variant="highlight">Doorgaan</Button> : <Button onClick={() => validateAnswers()} variant={nextButtonVariant()}>Klaar!</Button>}
+            <Button onClick={handleButtonClicked} variant={nextButtonVariant()}>{!isSubmitted ? "Klaar!" : "Doorgaan"}</Button>
             {!isSubmitted && <Button>Geef me een tip...</Button>}
           </div>
         </div>
