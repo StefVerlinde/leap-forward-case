@@ -72,12 +72,10 @@ function App() {
     }
   }
   const handleTimerEnd = () => {
-    console.log("handle timer end")
     validateAnswers();
   }
 
   const handleButtonClicked = () => {
-    console.log("button clicked")
     if (!isSubmitted) {
       validateAnswers();
     } else {
@@ -94,8 +92,8 @@ function App() {
   }
 
   return (
-    <div className="bg-background h-screen w-screen overflow-hidde flex justify-center items-center" >
-      <div className="w-[65%] flex gap-4 min-h-[600px]">
+    <div className="bg-background overflow-hidde flex justify-center items-center lg:h-screen lg:w-screen" >
+      <div className="w-full lg:w-[1100px] flex flex-col-reverse lg:flex-row gap-4 lg:min-h-[600px]">
         <LeftPanel />
         <div className="relative border-[12px] border-secondary w-full rounded-2xl bg-primary flex flex-col gap-5 py-4 px-5 text-center">
           {!isFinished ? (

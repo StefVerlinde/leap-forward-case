@@ -11,17 +11,14 @@ const Timer = ({ time, timerEnd, pause }: TimerProps) => {
     const [countdown, setCountdown] = useState(time);
 
     useEffect(() => {
-        console.log(time)
         setCountdown(time);
     }, [time]);
 
     useEffect(() => {
         let interval: NodeJS.Timeout | null = null;
-        console.log('effect run')
 
         if (!pause) {
             interval = setInterval(() => {
-                console.log('interval run')
                 setCountdown((prevTime) => {
                     if (prevTime <= 0) {
                         clearInterval(interval as NodeJS.Timeout);
