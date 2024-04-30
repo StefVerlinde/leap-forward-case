@@ -1,6 +1,4 @@
 import LeftPanel from "./components/LeftPanel"
-import Title from "./components/Title"
-import { Button } from "./components/ui/Button"
 import Timer from "./components/Timer"
 import { fetcher } from "./lib/fetcher"
 import useSWR from "swr"
@@ -8,6 +6,8 @@ import { AnswerType, Questions } from "./types/QuestionType"
 import { useState } from "react"
 import Score from "./components/Score"
 import ConfettiContainer from "./components/ConfettiContainer"
+import Title from "./components/Title"
+import { Button } from "./components/ui/Button"
 
 
 function App() {
