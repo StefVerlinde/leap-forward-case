@@ -1,13 +1,11 @@
 import LeftPanel from "./components/LeftPanel"
 import Title from "./components/Title"
-import Answer from "./components/Answer"
 import { Button } from "./components/ui/Button"
 import Timer from "./components/Timer"
-import { fetcher } from "./utils/fetcher"
+import { fetcher } from "./lib/fetcher"
 import useSWR from "swr"
 import { AnswerType, Questions } from "./types/QuestionType"
 import { useState } from "react"
-import { ANSWER_VARIANT } from "./enums/AnswerVariantEnum"
 
 
 function App() {
@@ -30,16 +28,13 @@ function App() {
     if (selectedAnswers.includes(answer)) {
       if (isSubmitted) {
         if (answer.correct) {
-          return ANSWER_VARIANT.CORRECT
+          return 'cardCorrect'
         }
-        return ANSWER_VARIANT.FALSE
+        return 'cardFalse'
       }
-      return ANSWER_VARIANT.SELECTED
+      return 'cardSelected'
     }
-  }
-
-  const isDisabled = (answer: AnswerType) => {
-    return (selectedAnswers.length === 3 || isSubmitted) && !selectedAnswers.includes(answer)
+    return 'card'
   }
 
   const nextButtonVariant = () => {
@@ -47,6 +42,10 @@ function App() {
       return 'highlight'
     }
     return 'default'
+  }
+
+  const isDisabled = (answer: AnswerType) => {
+    return (selectedAnswers.length === 3 || isSubmitted) && !selectedAnswers.includes(answer)
   }
 
   const validateAnswers = () => {
@@ -94,7 +93,7 @@ function App() {
           <Title title={questions[currentQuestion].question} />
           <div className="grid grid-cols-2 gap-x-5 gap-y-4">
             {questions[currentQuestion].answers.map((answer, index) => (
-              <Answer key={index} answer={answer.answer} variant={answerVariant(answer)} onClick={() => onAnswerClick(answer)} disabled={isDisabled(answer)} />
+              <Button key={index} variant={answerVariant(answer)} onClick={() => onAnswerClick(answer)} disabled={isDisabled(answer)}>{answer.answer}</Button>
             ))
             }
           </div>
