@@ -6,8 +6,8 @@ import { AnswerType, Questions } from "./types/QuestionType"
 import { useState } from "react"
 import Score from "./components/Score"
 import ConfettiContainer from "./components/ConfettiContainer"
-import Title from "./components/Title"
-import { Button } from "./components/ui/Button"
+import Title from "./components/Title2"
+import { Button } from "./components/ui/Button2"
 
 
 function App() {

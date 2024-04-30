@@ -1,7 +1,7 @@
 import { ArrowRotateRight, MapSolid, MusicNote, QuestionSolid } from '@/assets/icons'
 import StopwatchSolid from '../assets/icons/stopwatch-solid.svg?react'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/Avatar'
-import { Button } from './ui/Button'
+import { Button } from './ui/Button2'
 
 
 const LeftPanel = () => {
