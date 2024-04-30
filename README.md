@@ -18,7 +18,7 @@ To run this project locally, follow these steps:
 4. After installation, run `npm run dev` to start the development server.
 
 ### Documentation:
-For information and way of working about the project, please refer to the [Notion page]([https://test.com](https://hungry-freeze-1df.notion.site/Leap-Forward-Case-Stef-7c10ec76b3af4b1faeb176b6e68eea4b?pvs=4)).
+For information and way of working about the project, please refer to the [Notion page](https://hungry-freeze-1df.notion.site/Leap-Forward-Case-Stef-7c10ec76b3af4b1faeb176b6e68eea4b?pvs=4).
 
 ### Additional Notes:
 - Ensure you have Node.js and npm installed on your system before proceeding with the installation.
