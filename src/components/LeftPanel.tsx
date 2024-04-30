@@ -21,7 +21,7 @@ const LeftPanel = () => {
                     </div>
                 </div>
                 <Avatar className='bg-blue-300 size-[100px] mx-auto absolute bottom-[-20px] left-1/2 translate-x-[-50%] shadow-xl'>
-                    <AvatarImage src="src/assets/avatar.png" />
+                    <AvatarImage src="./avatar.png" />
                     <AvatarFallback>Profile Image</AvatarFallback>
                 </Avatar>
             </div>
