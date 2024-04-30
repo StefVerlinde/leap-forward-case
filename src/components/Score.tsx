@@ -7,10 +7,12 @@ interface ScorePorps {
 
 const Score = ({ score, reset }: ScorePorps) => {
     return (
-        <div className="text-white flex flex-col items-center justify-center h-full">
+        <div className="text-white relative h-full justify-center flex flex-col gap-5">
             <h3 className="text-4xl">Your total score was:</h3>
             <h1 className="text-9xl">{score}</h1>
-            <Button className="absolute bottom-5" size="lg" onClick={reset}>Try again</Button>
+            <div className="absolute bottom-0 left-1/2 translate-x-[-50%]">
+                <Button size="lg" onClick={reset}>Try again</Button>
+            </div>
         </div>
     )
 }
